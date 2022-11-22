@@ -5,13 +5,16 @@ import com.antgut.rss_app.app.serializer.KSerializer
 import com.antgut.rss_app.management.domain.ManagementModel
 import com.antgut.rss_app.management.data.local.LocalDataSource
 
-class XmlDataSource (private val sharedPreferences: SharedPreferences, private val serializer: KSerializer) :
+class XmlDataSource(
+    private val sharedPreferences: SharedPreferences,
+    private val serializer: KSerializer
+) :
     LocalDataSource {
 
     private val editor = sharedPreferences.edit()
 
-    override suspend fun createRss(rssModel: ManagementModel) {
-        editor.putString(rssModel.name, serializer.toJson(rssModel, ManagementModel::class.java))
+    override suspend fun createRss(url: String, name: String) {
+        editor.putString(url,name).apply()
     }
 
 
