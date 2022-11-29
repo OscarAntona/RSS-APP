@@ -1,6 +1,9 @@
+package com.antgut.rss_app
+
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.antgut.rss_app.R
+import androidx.navigation.findNavController
+import com.antgut.rss_app.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -44,4 +47,3 @@ class MainActivity : AppCompatActivity() {
         findNavController(R.id.fragment_container_view).navigate(NavGraphDirections.actionToFeed())
     }
 
-}
