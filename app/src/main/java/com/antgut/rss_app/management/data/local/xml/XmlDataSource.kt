@@ -1,8 +1,7 @@
 package com.antgut.rss_app.management.data.local.xml
 
 import android.content.SharedPreferences
-import com.antgut.rss_app.app.serializer.KSerializer
-import com.antgut.rss_app.management.domain.ManagementModel
+import com.antgut.app.serializer.KSerializer
 import com.antgut.rss_app.management.data.local.LocalDataSource
 
 class XmlDataSource(

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/feed">
+
+    <fragment
+        android:id="@+id/manager"
+        android:name="com.antgut.rss_app.management.presentation.RssManagerFragment"
+        android:label="@string/manager_fragment_title">
+        <action
+            android:id="@+id/action_to_bottom_sheet"
+            app:destination="@+id/bottom_sheet"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/feed"
+        android:name="com.antgut.rss_app.feed.presentation.RssFeedFragment"
+        android:label="@string/feed_fragment_title" />
+
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.antgut.rss_app.profile.presentation.ProfileFragment"
+        android:label="@string/profile_fragment_title" />
+
+    <action
+        android:id="@+id/action_to_profile"
+        app:destination="@id/profile" />
+
+    <action
+        android:id="@+id/action_to_manager"
+        app:destination="@id/manager" />
+
+    <action
+        android:id="@+id/action_to_feed"
+        app:destination="@id/feed" />
+    <dialog
+        android:id="@+id/bottom_sheet"
+        android:name="com.antgut.rss_app.management.presentation.RssBottomSheetFragment" />
+
+</navigation>
