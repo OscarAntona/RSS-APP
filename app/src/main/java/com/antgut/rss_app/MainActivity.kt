@@ -47,6 +47,5 @@ class MainActivity : AppCompatActivity() {
         findNavController(R.id.fragment_container_view).navigate(NavGraphDirections.actionToFeed())
     }
 
-
 }
 
