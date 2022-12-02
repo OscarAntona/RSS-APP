@@ -8,17 +8,17 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.antgut.app.serializer.GsonSerializer
 import com.antgut.rss_app.R
-import com.antgut.rss_app.databinding.RssBottomSheetBinding
+import com.antgut.rss_app.databinding.FragmentUserFormBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 
-class RssBottomSheetFragment : BottomSheetDialogFragment() {
+class FormFragment : BottomSheetDialogFragment() {
 
-    private var binding: RssBottomSheetBinding? = null
-    private val viewModel by lazy {
+    var binding: FragmentUserFormBinding? = null
+    val viewModel by lazy {
         this.activity?.let {
-            RssManagerFactory().saveUserRss(
+            FormFactory().saveUserRss(
                 it.getPreferences(Context.MODE_PRIVATE),
                 GsonSerializer()
             )
@@ -30,12 +30,12 @@ class RssBottomSheetFragment : BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = RssBottomSheetBinding.inflate(inflater)
+        binding = FragmentUserFormBinding.inflate(inflater)
         setupView()
         return binding?.root
     }
 
-    private fun setupView() {
+    fun setupView() {
         binding?.apply {
             saveButton.setOnClickListener {
                 viewModel?.saveRss(
@@ -51,7 +51,7 @@ class RssBottomSheetFragment : BottomSheetDialogFragment() {
         }
     }
 
-    private fun showBar() {
+    fun showBar() {
         Snackbar.make(
             (requireActivity()).findViewById<ViewGroup>(R.id.main_view),
             "Guardado",

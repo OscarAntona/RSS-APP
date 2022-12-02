@@ -1,31 +1,30 @@
 package com.antgut.rss_app
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import androidx.navigation.findNavController
-import com.antgut.rss_app.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.color.DynamicColors
+import com.antgut.rss_app.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(){
 
-    private var binding: ActivityMainBinding? = null
+class MainActivity : AppCompatActivity() {
+
+    var binding: ActivityMainBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setupBinding()
         setupNavigation()
     }
 
-    private fun setupBinding() {
+    fun setupBinding() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         binding?.let {
             setContentView(it.root)
         }
     }
 
-    private fun setupNavigation() {
+    fun setupNavigation() {
         findViewById<BottomNavigationView>(R.id.bottom_menu).setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.to_profile_item -> navigateToProfile()
@@ -37,15 +36,15 @@ class MainActivity : AppCompatActivity(){
 
     }
 
-    private fun navigateToProfile() {
+    fun navigateToProfile() {
         findNavController(R.id.fragment_container_view).navigate(NavGraphDirections.actionToProfile())
     }
 
-    private fun navigateToManager() {
+    fun navigateToManager() {
         findNavController(R.id.fragment_container_view).navigate(NavGraphDirections.actionToManager())
     }
 
-    private fun navigateToFeed() {
+    fun navigateToFeed() {
         findNavController(R.id.fragment_container_view).navigate(NavGraphDirections.actionToFeed())
     }
 

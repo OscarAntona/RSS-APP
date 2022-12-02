@@ -5,18 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.antgut.rss_app.databinding.FragmentRssFeedBinding
+import com.antgut.rss_app.databinding.FragmentFeedBinding
 
-class RssFeedFragment : Fragment() {
+class FeedFragment : Fragment() {
 
-    private var binding: FragmentRssFeedBinding?=null
+    var binding: FragmentFeedBinding?=null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentRssFeedBinding.inflate(inflater)
+        binding = FragmentFeedBinding.inflate(inflater)
         return binding?.root
     }
 }

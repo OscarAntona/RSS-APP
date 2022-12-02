@@ -1,7 +1,7 @@
 package com.antgut.rss_app.management.domain
 
 interface RssRepository {
-    suspend fun saveRss(url: String, name: String)
-    suspend fun getRss():List<ManagementModel>
+    suspend fun saveRssUser(url: String, name: String)
+    suspend fun getRssUser():List<ManagementModel>
 
 }

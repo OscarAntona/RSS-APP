@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/manager"
-        android:name="com.antgut.rss_app.management.presentation.RssManagerFragment"
+        android:name="com.antgut.rss_app.management.presentation.ManagerFragment"
         android:label="@string/manager_fragment_title">
         <action
             android:id="@+id/action_to_bottom_sheet"
@@ -15,7 +15,7 @@
 
     <fragment
         android:id="@+id/feed"
-        android:name="com.antgut.rss_app.feed.presentation.RssFeedFragment"
+        android:name="com.antgut.rss_app.feed.presentation.FeedFragment"
         android:label="@string/feed_fragment_title" />
 
     <fragment
@@ -36,6 +36,7 @@
         app:destination="@id/feed" />
     <dialog
         android:id="@+id/bottom_sheet"
-        android:name="com.antgut.rss_app.management.presentation.RssBottomSheetFragment" />
+        android:name="com.antgut.rss_app.management.presentation.FormFragment">
+    </dialog>
 
 </navigation>
