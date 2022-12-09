@@ -7,11 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.antgut.app.serializer.GsonSerializer
+import com.antgut.app.snackbar.showSnackbar
 import com.antgut.rss_app.R
 import com.antgut.rss_app.databinding.FragmentUserFormBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.snackbar.BaseTransientBottomBar
-import com.google.android.material.snackbar.Snackbar
 
 class FormFragment : BottomSheetDialogFragment() {
 
@@ -43,20 +42,11 @@ class FormFragment : BottomSheetDialogFragment() {
                     inputName.text.toString()
                 )
                 findNavController().navigateUp()
-                showBar()
+                showSnackbar(getString(R.string.snack_bar_save_text))
             }
             binding?.cancelButton?.setOnClickListener {
                 findNavController().navigateUp()
             }
         }
     }
-
-    fun showBar() {
-        Snackbar.make(
-            (requireActivity()).findViewById<ViewGroup>(R.id.main_view),
-            "Guardado",
-            BaseTransientBottomBar.LENGTH_SHORT
-        ).show()
-    }
-
 }

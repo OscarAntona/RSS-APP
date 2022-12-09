@@ -6,10 +6,12 @@ import com.antgut.rss_app.databinding.FragmentUserItemBinding
 import com.antgut.rss_app.management.domain.ManagementModel
 
 class ManagerViewHolder (val view: View): RecyclerView.ViewHolder(view){
-    fun bind(rssvalue:ManagementModel){
+    fun bind(rssvalue: ManagementModel, clickItem: ((String) -> Unit)?){
         val binding = FragmentUserItemBinding.bind(view)
         binding.nombreRss.text = rssvalue.name
         binding.urlRss.text = rssvalue.url
+        binding.deleteItemIcon.setOnClickListener {
+            clickItem?.invoke(rssvalue.url)
+        }
     }
-
 }

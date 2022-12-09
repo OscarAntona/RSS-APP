@@ -15,6 +15,11 @@ class ManagerAdapter : RecyclerView.Adapter<ManagerViewHolder>(){
         setOfData.addAll(rssvalue)
         notifyDataSetChanged()
     }
+    private var clickItem: ((String) -> Unit)? =null
+
+    fun setOnClick(clickItem :(String) -> Unit){
+        this.clickItem = clickItem
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ManagerViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_user_item, parent, false)
@@ -22,7 +27,7 @@ class ManagerAdapter : RecyclerView.Adapter<ManagerViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: ManagerViewHolder, position: Int) {
-        holder.bind(setOfData[position])
+        holder.bind(setOfData[position], clickItem)
     }
 
     override fun getItemCount(): Int {

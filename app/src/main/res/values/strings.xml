@@ -15,4 +15,6 @@
     <string name="manager_textview_text">Manager</string>
     <string name="feed_textview_text">Feed</string>
     <string name="profile_textview_text">Profile</string>
+    <string name="snack_bar_save_text">Rss added</string>
+    <string name="snack_bar_delete_text">Rss deleted</string>
 </resources>

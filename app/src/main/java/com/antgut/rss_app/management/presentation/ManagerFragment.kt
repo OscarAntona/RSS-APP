@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.antgut.app.serializer.GsonSerializer
+import com.antgut.app.snackbar.showSnackbar
 import com.antgut.rss_app.R
 import com.antgut.rss_app.databinding.FragmentManagerBinding
 import com.antgut.rss_app.management.presentation.adapter.ManagerAdapter
@@ -71,6 +72,9 @@ class ManagerFragment : Fragment() {
                 false
             )
             skeleton = feedListRecyclerView.applySkeleton(R.layout.fragment_feed)
+            rssAdapter.setOnClick{viewModel?.deleteRss(it)
+                showSnackbar(getString(R.string.snack_bar_delete_text))
+            }
         }
     }
 
