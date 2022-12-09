@@ -13,5 +13,8 @@ class RssDataRepository (private val source: XmlDataSource): RssRepository {
     override suspend fun getRssUser(): List<ManagementModel> {
         return source.getRssUser()
     }
+    override suspend fun deleteRss(url: String) {
+        source.deleteRss(url)
+    }
 
 }

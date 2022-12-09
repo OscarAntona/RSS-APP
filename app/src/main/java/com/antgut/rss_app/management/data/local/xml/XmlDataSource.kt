@@ -22,6 +22,9 @@ class XmlDataSource(val sharedPreferences: SharedPreferences, val serializer: KS
         }
         return rssList
     }
+    override suspend fun deleteRss(url: String) {
+        editor.remove(url).apply()
+    }
 
 
 }
