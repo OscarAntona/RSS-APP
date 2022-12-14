@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.antgut.app.extensions.showBar
 import com.antgut.app.serializer.GsonSerializer
 import com.antgut.rss_app.R
 import com.antgut.rss_app.databinding.RssBottomSheetBinding
@@ -35,6 +37,11 @@ class RssBottomSheetFragment : BottomSheetDialogFragment() {
         return binding?.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setUpObserver()
+    }
+
     private fun setupView() {
         binding?.apply {
             saveButton.setOnClickListener {
@@ -43,7 +50,6 @@ class RssBottomSheetFragment : BottomSheetDialogFragment() {
                     inputName.text.toString()
                 )
                 findNavController().navigateUp()
-                showBar()
             }
             binding?.cancelButton?.setOnClickListener {
                 findNavController().navigateUp()
@@ -51,12 +57,18 @@ class RssBottomSheetFragment : BottomSheetDialogFragment() {
         }
     }
 
-    private fun showBar() {
-        Snackbar.make(
-            (requireActivity()).findViewById<ViewGroup>(R.id.main_view),
-            "Guardado",
-            BaseTransientBottomBar.LENGTH_SHORT
-        ).show()
-    }
+    private fun setUpObserver() {
+        val subscriber = Observer<RssManagerViewModel.RssManagerUiState> {
+            if (it.isSuccess)
+                requireActivity().findViewById<View>(R.id.fragment_container_view)
+                    .showBar(getString(R.string.success_saving))
+            else {
+                requireActivity().findViewById<View>(R.id.fragment_container_view)
+                    .showBar(getString(R.string.error_saving))
+            }
+        }
 
+        viewModel?.managerPublisher?.observe(viewLifecycleOwner, subscriber)
+
+    }
 }

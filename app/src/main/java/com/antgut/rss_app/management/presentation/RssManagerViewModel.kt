@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 
 class RssManagerViewModel(private val addUserRssUseCase: SaveRssUseCase) : ViewModel() {
 
-    private val managerPublisher: MutableLiveData<RssManagerUiState> by lazy {
+    val managerPublisher: MutableLiveData<RssManagerUiState> by lazy {
         MutableLiveData<RssManagerUiState>()
     }
 

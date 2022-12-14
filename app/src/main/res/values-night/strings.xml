@@ -15,4 +15,6 @@
     <string name="manager_textview_text">Manager</string>
     <string name="feed_textview_text">Feed</string>
     <string name="profile_textview_text">Profile</string>
+    <string name="success_saving">Success saving rss</string>
+    <string name="error_saving">Error saving rss</string>
 </resources>
