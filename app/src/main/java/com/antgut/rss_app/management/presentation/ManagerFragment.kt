@@ -72,8 +72,10 @@ class ManagerFragment : Fragment() {
                 false
             )
             skeleton = feedListRecyclerView.applySkeleton(R.layout.fragment_feed)
-            rssAdapter.setOnClick{viewModel?.deleteRss(it)
-                showSnackbar(getString(R.string.snack_bar_delete_text))
+            rssAdapter.setOnClick {
+                viewModel?.deleteRss(it)
+
+                showSnackbar(getString(R.string.snack_bar_delete_text,),requireActivity().findViewById(R.id.main_view))
             }
         }
     }

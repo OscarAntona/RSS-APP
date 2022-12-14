@@ -42,7 +42,7 @@ class FormFragment : BottomSheetDialogFragment() {
                     inputName.text.toString()
                 )
                 findNavController().navigateUp()
-                (requireActivity()).findViewById<ViewGroup>(R.id.main_view).showSnackbar(getString(R.string.snack_bar_save_text))
+                showSnackbar(getString(R.string.snack_bar_save_text,),requireActivity().findViewById(R.id.main_view))
             }
             binding?.cancelButton?.setOnClickListener {
                 findNavController().navigateUp()
