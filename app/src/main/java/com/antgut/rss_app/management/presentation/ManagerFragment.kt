@@ -36,7 +36,7 @@ class ManagerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentManagerBinding.inflate(inflater)
-        openBottomSheet()
+        setupBottomSheet()
         setupView()
         return binding?.root
     }
@@ -47,7 +47,7 @@ class ManagerFragment : Fragment() {
         viewModel?.getRss()
     }
 
-    fun openBottomSheet() {
+    fun setupBottomSheet() {
         binding?.rssManagerToolbar?.apply {
             title = getString(R.string.manager_fragment_title)
             setOnMenuItemClickListener {
