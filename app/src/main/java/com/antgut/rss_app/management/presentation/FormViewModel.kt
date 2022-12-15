@@ -3,22 +3,22 @@ package com.antgut.rss_app.management.presentation
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.antgut.rss_app.management.domain.SaveRssUseCase
+import com.antgut.rss_app.management.domain.AddRssUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class RssManagerViewModel(private val addUserRssUseCase: SaveRssUseCase) : ViewModel() {
+class FormViewModel(private val addUserRssUseCase: AddRssUseCase) : ViewModel() {
 
-    val managerPublisher: MutableLiveData<RssManagerUiState> by lazy {
+    val rssManagerPublisher: MutableLiveData<RssManagerUiState> by lazy {
         MutableLiveData<RssManagerUiState>()
     }
 
     fun saveRss(url: String, name: String) {
-        managerPublisher.value = RssManagerUiState(true)
+        rssManagerPublisher.value = RssManagerUiState(true)
 
         viewModelScope.launch(Dispatchers.IO) {
             addUserRssUseCase.execute(url, name)
-            managerPublisher.postValue(
+            rssManagerPublisher.postValue(
                 RssManagerUiState(
                     isSuccess = true
                 )

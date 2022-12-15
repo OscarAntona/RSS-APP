@@ -4,17 +4,12 @@ import android.content.SharedPreferences
 import com.antgut.app.serializer.KSerializer
 import com.antgut.rss_app.management.data.RssDataRepository
 import com.antgut.rss_app.management.data.local.xml.XmlDataSource
-import com.antgut.rss_app.management.domain.SaveRssUseCase
+import com.antgut.rss_app.management.domain.AddRssUseCase
 
-class RssManagerFactory {
-
-
-    fun saveUserRss(
-        sharedPreferences: SharedPreferences,
-        serializer: KSerializer
-    ): RssManagerViewModel {
-        return RssManagerViewModel(
-            SaveRssUseCase(
+class FormFactory {
+    fun saveUserRss(sharedPreferences: SharedPreferences, serializer: KSerializer):FormViewModel{
+        return FormViewModel(
+            AddRssUseCase(
                 RssDataRepository(
                     XmlDataSource(
                         sharedPreferences, serializer
@@ -23,6 +18,4 @@ class RssManagerFactory {
             )
         )
     }
-
-
 }

@@ -1,7 +1,7 @@
 package com.antgut.rss_app.management.domain
 
-class GetRssUseCase  (private val repository: RssRepository){
+class GetUserUseCase(private val repository: RssRepository){
     suspend fun execute():List<ManagementModel>{
-        return repository.getRss()
+        return repository.getRssUser()
     }
 }
