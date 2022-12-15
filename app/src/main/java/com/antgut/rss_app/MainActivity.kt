@@ -5,18 +5,20 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import com.antgut.rss_app.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.color.DynamicColors
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
 
-    var binding: ActivityMainBinding? = null
+    private var binding: ActivityMainBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setupBinding()
         setupNavigation()
     }
 
-    fun setupBinding() {
+    private fun setupBinding() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         binding?.let {
             setContentView(it.root)

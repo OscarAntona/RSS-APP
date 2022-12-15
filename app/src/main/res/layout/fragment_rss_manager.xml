@@ -4,7 +4,13 @@
     android:id="@+id/fragmentManager"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/rss_manager_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/manager_toolbar" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -12,5 +18,4 @@
         android:textSize="25dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

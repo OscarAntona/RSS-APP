@@ -1,4 +1,4 @@
-package com.antgut.rss_app.app.serializer
+package com.antgut.app.serializer
 
 import com.google.gson.Gson
 

@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.antgut.rss_app.R
 import com.antgut.rss_app.databinding.FragmentRssManagerBinding
 
 class RssManagerFragment : Fragment() {
@@ -17,8 +19,23 @@ class RssManagerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentRssManagerBinding.inflate(inflater)
+        setupView()
         return binding?.root
     }
 
+    private fun setupView() {
+        binding?.rssManagerToolbar?.apply {
+            title = getString(R.string.manager_fragment_title)
+            setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.action_add_rss -> showBottomSheet()
+                }
+                true
+            }
+        }
+    }
 
+    private fun showBottomSheet() {
+        findNavController().navigate(RssManagerFragmentDirections.actionToBottomSheet())
+    }
 }
