@@ -11,7 +11,7 @@ import com.antgut.rss_app.databinding.FragmentRssManagerBinding
 
 class RssManagerFragment : Fragment() {
 
-    private var binding: FragmentRssManagerBinding? = null
+    var binding: FragmentRssManagerBinding?=null
 
     override fun onCreateView(
         inflater: LayoutInflater,

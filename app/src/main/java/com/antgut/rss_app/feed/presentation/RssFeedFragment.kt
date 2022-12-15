@@ -9,7 +9,7 @@ import com.antgut.rss_app.databinding.FragmentRssFeedBinding
 
 class RssFeedFragment : Fragment() {
 
-    private var binding: FragmentRssFeedBinding?=null
+    var binding: FragmentRssFeedBinding?=null
 
     override fun onCreateView(
         inflater: LayoutInflater,

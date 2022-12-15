@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity(){
         }
     }
 
-    private fun setupNavigation() {
+    fun setupNavigation() {
         findViewById<BottomNavigationView>(R.id.bottom_menu).setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.to_profile_item -> navigateToProfile()
@@ -37,15 +37,15 @@ class MainActivity : AppCompatActivity(){
 
     }
 
-    private fun navigateToProfile() {
+    fun navigateToProfile() {
         findNavController(R.id.fragment_container_view).navigate(NavGraphDirections.actionToProfile())
     }
 
-    private fun navigateToManager() {
+    fun navigateToManager() {
         findNavController(R.id.fragment_container_view).navigate(NavGraphDirections.actionToManager())
     }
 
-    private fun navigateToFeed() {
+    fun navigateToFeed() {
         findNavController(R.id.fragment_container_view).navigate(NavGraphDirections.actionToFeed())
     }
 

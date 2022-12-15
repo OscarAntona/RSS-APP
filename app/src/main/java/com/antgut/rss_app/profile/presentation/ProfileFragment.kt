@@ -9,7 +9,7 @@ import com.antgut.rss_app.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
 
-    private var binding: FragmentProfileBinding? = null
+    var binding: FragmentProfileBinding?=null
 
     override fun onCreateView(
         inflater: LayoutInflater,
