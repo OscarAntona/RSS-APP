@@ -57,11 +57,9 @@ class FormFragment : BottomSheetDialogFragment() {
     private fun setUpObserver() {
         val subscriber = Observer<FormViewModel.RssManagerUiState> {
             if (it.isSuccess)
-                requireActivity().findViewById<View>(R.id.fragment_container_view)
-                    .showSnackbar(getString(R.string.success_saving))
+                showSnackbar(getString(R.string.success_saving),requireActivity().findViewById(R.id.fragment_container_view))
             else {
-                requireActivity().findViewById<View>(R.id.fragment_container_view)
-                    .showSnackbar(getString(R.string.error_saving))
+                showSnackbar(getString(R.string.error_saving),requireActivity().findViewById(R.id.fragment_container_view))
             }
         }
 

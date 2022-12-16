@@ -17,4 +17,5 @@
     <string name="profile_textview_text">Profile</string>
     <string name="success_saving">success saving rss</string>
     <string name="error_saving">error saving rss</string>
+    <string name="deleted">Rss deleted</string>
 </resources>
