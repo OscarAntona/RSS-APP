@@ -36,7 +36,7 @@ class ManagerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentManagerBinding.inflate(inflater)
-        openBottomSheet()
+        setupBottomSheet()
         setupView()
         return binding?.root
     }
@@ -47,7 +47,7 @@ class ManagerFragment : Fragment() {
         viewModel?.getRss()
     }
 
-    fun openBottomSheet() {
+    fun setupBottomSheet() {
         binding?.rssManagerToolbar?.apply {
             title = getString(R.string.manager_fragment_title)
             setOnMenuItemClickListener {
@@ -72,17 +72,15 @@ class ManagerFragment : Fragment() {
                 false
             )
             skeleton = feedListRecyclerView.applySkeleton(R.layout.fragment_feed)
-            rssAdapter.setOnClick {
-                viewModel?.deleteRss(it)
-
-                showSnackbar(getString(R.string.snack_bar_delete_text,),requireActivity().findViewById(R.id.main_view))
+            rssAdapter.setOnClick{viewModel?.deleteRss(it)
+                showSnackbar(getString(R.string.error_saving))
             }
         }
     }
 
     fun setupObservers() {
         val feedSubscriber =
-            Observer<ManagerViewModel.RssManagerFeedUiState> { uiState ->
+            Observer<ManagerViewModel.ManagerFeedUiState> { uiState ->
                 if (uiState.isLoading) {
                     skeleton?.showSkeleton()
                 } else {

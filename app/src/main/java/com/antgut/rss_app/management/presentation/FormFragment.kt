@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.antgut.app.serializer.GsonSerializer
 import com.antgut.app.snackbar.showSnackbar
@@ -34,6 +35,10 @@ class FormFragment : BottomSheetDialogFragment() {
         return binding?.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setUpObserver()
+    }
     fun setupView() {
         binding?.apply {
             saveButton.setOnClickListener {
@@ -42,11 +47,25 @@ class FormFragment : BottomSheetDialogFragment() {
                     inputName.text.toString()
                 )
                 findNavController().navigateUp()
-                showSnackbar(getString(R.string.snack_bar_save_text,),requireActivity().findViewById(R.id.main_view))
             }
             binding?.cancelButton?.setOnClickListener {
                 findNavController().navigateUp()
             }
         }
+    }
+
+    private fun setUpObserver() {
+        val subscriber = Observer<FormViewModel.RssManagerUiState> {
+            if (it.isSuccess)
+                requireActivity().findViewById<View>(R.id.fragment_container_view)
+                    .showSnackbar(getString(R.string.success_saving))
+            else {
+                requireActivity().findViewById<View>(R.id.fragment_container_view)
+                    .showSnackbar(getString(R.string.error_saving))
+            }
+        }
+
+        viewModel?.rssManagerPublisher?.observe(viewLifecycleOwner, subscriber)
+
     }
 }

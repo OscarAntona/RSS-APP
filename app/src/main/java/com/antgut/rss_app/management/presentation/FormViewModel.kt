@@ -26,7 +26,6 @@ class FormViewModel(private val addUserRssUseCase: AddRssUseCase) : ViewModel() 
         }
     }
 
-
     data class RssManagerUiState(
         val isSuccess: Boolean = false
     )

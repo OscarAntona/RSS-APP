@@ -9,34 +9,39 @@ import com.antgut.rss_app.management.domain.ManagementModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ManagerViewModel(private val getUserRssUseCase: GetUserUseCase, private val deleteRssUseCase: DeleteRssUseCase) : ViewModel() {
+class ManagerViewModel(
+    private val getUserRssUseCase: GetUserUseCase,
+    private val deleteRssUseCase: DeleteRssUseCase
+) : ViewModel() {
 
-    val managerPublisher: MutableLiveData<RssManagerFeedUiState> by lazy {
-        MutableLiveData<RssManagerFeedUiState>()
+    val managerPublisher: MutableLiveData<ManagerFeedUiState> by lazy {
+        MutableLiveData<ManagerFeedUiState>()
     }
 
     fun getRss() {
-        managerPublisher.value = RssManagerFeedUiState(true)
+        managerPublisher.value = ManagerFeedUiState(true)
 
         viewModelScope.launch(Dispatchers.IO) {
             val rssFeed = getUserRssUseCase.execute()
             managerPublisher.postValue(
-                RssManagerFeedUiState(
+                ManagerFeedUiState(
                     isLoading = false,
                     rssFeed = rssFeed
                 )
             )
         }
     }
-    fun deleteRss(url:String){
-        viewModelScope.launch (Dispatchers.IO){
+
+    fun deleteRss(url: String) {
+        viewModelScope.launch(Dispatchers.IO) {
             deleteRssUseCase.execute(url)
         }
     }
 
-    data class RssManagerFeedUiState(
+    data class ManagerFeedUiState(
         val isLoading: Boolean = false,
         val rssFeed: List<ManagementModel> = emptyList()
-    )
+
+        )
 
 }
