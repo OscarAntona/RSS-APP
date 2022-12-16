@@ -36,6 +36,6 @@ class RssManagerFragment : Fragment() {
     }
 
     private fun showBottomSheet() {
-        findNavController().navigate(RssManagerFragmentDirections.actionToBottomSheet())
+        findNavController().navigate(ManagerFragmentDirections.actionToBottomSheet())
     }
 }

@@ -73,14 +73,14 @@ class ManagerFragment : Fragment() {
             )
             skeleton = feedListRecyclerView.applySkeleton(R.layout.fragment_feed)
             rssAdapter.setOnClick{viewModel?.deleteRss(it)
-                showSnackbar(getString(R.string.snack_bar_delete_text))
+                showSnackbar(getString(R.string.error_saving))
             }
         }
     }
 
     fun setupObservers() {
         val feedSubscriber =
-            Observer<ManagerViewModel.RssManagerFeedUiState> { uiState ->
+            Observer<ManagerViewModel.ManagerFeedUiState> { uiState ->
                 if (uiState.isLoading) {
                     skeleton?.showSkeleton()
                 } else {

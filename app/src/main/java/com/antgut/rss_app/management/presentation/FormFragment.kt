@@ -55,7 +55,7 @@ class FormFragment : BottomSheetDialogFragment() {
     }
 
     private fun setUpObserver() {
-        val subscriber = Observer<RssManagerViewModel.RssManagerUiState> {
+        val subscriber = Observer<FormViewModel.RssManagerUiState> {
             if (it.isSuccess)
                 requireActivity().findViewById<View>(R.id.fragment_container_view)
                     .showSnackbar(getString(R.string.success_saving))
@@ -65,7 +65,7 @@ class FormFragment : BottomSheetDialogFragment() {
             }
         }
 
-        viewModel?.managerPublisher?.observe(viewLifecycleOwner, subscriber)
+        viewModel?.rssManagerPublisher?.observe(viewLifecycleOwner, subscriber)
 
     }
 }
