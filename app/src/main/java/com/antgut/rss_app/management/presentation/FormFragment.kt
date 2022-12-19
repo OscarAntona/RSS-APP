@@ -20,7 +20,8 @@ class FormFragment : BottomSheetDialogFragment() {
         this.activity?.let {
             FormFactory().saveUserRss(
                 it.getPreferences(Context.MODE_PRIVATE),
-                GsonSerializer()
+                GsonSerializer(),
+                requireContext()
             )
         }
     }

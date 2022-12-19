@@ -13,6 +13,7 @@ import com.antgut.app.serializer.GsonSerializer
 import com.antgut.app.snackbar.showSnackbar
 import com.antgut.rss_app.R
 import com.antgut.rss_app.databinding.FragmentManagerBinding
+import com.antgut.rss_app.management.data.local.datastore.DataStoreLocalDataSource
 import com.antgut.rss_app.management.presentation.adapter.ManagerAdapter
 import com.faltenreich.skeletonlayout.Skeleton
 import com.faltenreich.skeletonlayout.applySkeleton
@@ -24,8 +25,8 @@ class ManagerFragment : Fragment() {
     var rssAdapter = ManagerAdapter()
     val viewModel by lazy {
         this.activity?.let {
-            ManagerFactory().getRss(
-                GsonSerializer(), it.getPreferences(Context.MODE_PRIVATE)
+            DataStoreFactory().injectViewModel(
+                requireContext()
             )
         }
     }
@@ -44,7 +45,7 @@ class ManagerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupObservers()
-        viewModel?.getRss()
+        viewModel?.obtainUserRssList()
     }
 
     fun setupBottomSheet() {
@@ -72,7 +73,7 @@ class ManagerFragment : Fragment() {
                 false
             )
             skeleton = feedListRecyclerView.applySkeleton(R.layout.fragment_feed)
-            rssAdapter.setOnClick{viewModel?.deleteRss(it)
+            rssAdapter.setOnClick{viewModel?.deleteUserRss(it)
                 showSnackbar(getString(R.string.deleted),requireActivity().findViewById(R.id.fragment_container_view))
             }
         }
@@ -80,15 +81,15 @@ class ManagerFragment : Fragment() {
 
     fun setupObservers() {
         val feedSubscriber =
-            Observer<ManagerViewModel.ManagerFeedUiState> { uiState ->
+            Observer<RssDataStoreViewModel.UiState> { uiState ->
                 if (uiState.isLoading) {
                     skeleton?.showSkeleton()
                 } else {
                     skeleton?.showOriginal()
-                    rssAdapter?.setDataItems(uiState.rssFeed)
+                    uiState.userRssList?.let{rssAdapter?.setDataItems(it)}
                 }
             }
-        viewModel?.managerPublisher?.observe(viewLifecycleOwner, feedSubscriber)
+        viewModel?.uiState?.observe(viewLifecycleOwner, feedSubscriber)
     }
 
 

@@ -22,11 +22,10 @@ class ManagerViewModel(
         managerPublisher.value = ManagerFeedUiState(true)
 
         viewModelScope.launch(Dispatchers.IO) {
-            val rssFeed = getUserRssUseCase.execute()
+            val rssFeed = getUserRssUseCase.invoke()
             managerPublisher.postValue(
                 ManagerFeedUiState(
-                    isLoading = false,
-                    rssFeed = rssFeed
+                    isLoading = false
                 )
             )
         }
@@ -34,7 +33,7 @@ class ManagerViewModel(
 
     fun deleteRss(url: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            deleteRssUseCase.execute(url)
+            deleteRssUseCase.invoke(url)
         }
     }
 
