@@ -7,8 +7,8 @@
     <dimen name="margin_top">6dp</dimen>
     <dimen name="margin_start_text">30dp</dimen>
     <dimen name="margin_top_text">6dp</dimen>
-    <dimen name="delete_icon_size">35dp</dimen>
-    <dimen name="icon_dimen">60dp</dimen>
+    <dimen name="delete_icon_size">72dp</dimen>
+    <dimen name="icon_dimen">72dp</dimen>
     <dimen name="margin_item">10dp</dimen>
     <dimen name="rec_view_padding">20dp</dimen>
 </resources>

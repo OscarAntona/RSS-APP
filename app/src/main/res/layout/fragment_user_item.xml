@@ -27,18 +27,19 @@
             app:layout_constraintTop_toTopOf="@id/rss_icon"
             tools:text="Marca" />
 
-        <TextView
-            android:id="@+id/url_rss"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_top_text"
-            android:textSize="@dimen/item_text_size"
-            android:textStyle="italic"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@id/nombre_rss"
-            tools:text="https://www.marca.com" />
+    <TextView
+        android:id="@+id/url_rss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_item"
+        android:layout_marginBottom="@dimen/margin_top_text"
+        android:textSize="@dimen/item_text_size"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/nombre_rss"
+        tools:text="https://www.marca.com" />
 
-        <ImageButton
+    <ImageButton
             android:id="@+id/delete_item_icon"
             android:layout_width="@dimen/delete_icon_size"
             android:layout_height="@dimen/delete_icon_size"
